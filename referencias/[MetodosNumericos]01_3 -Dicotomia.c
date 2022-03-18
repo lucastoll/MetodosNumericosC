@@ -96,8 +96,6 @@ main()
 float CalculaValorK(float a, float b, float erro)
 {
     float fValorK;
-
-    //Realizar o calculo do valor do K
     fValorK = (log10(b-a) - log10(erro))/(log10(2));
 
 
@@ -119,10 +117,8 @@ float funcaoX(float ponto)
     return resultado;
 }
 
-//Imprimindo o cabeçalho
 void ImprimirCabecalhoTabela()
 {
-    //Impressão do cabeçalho
     printf("I |  a\t|  b\t|  m\t|  f(a)\t|  f(b)\t|  f(m)\t| fa*fm\t| fm*fb\t|\n");
     printf("--+-----+-------+-------+-------+-------+-------+-------+-------+\n");
 }
