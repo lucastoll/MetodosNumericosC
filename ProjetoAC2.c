@@ -12,6 +12,7 @@ Matheus Parizotto Martins            RA 211067
 float funcaoX(int grau, float x, char funcaode);
 float CalculaValorK(float a, float b, float erro);
 void ImprimirCabecalhoTabela();
+void ImprimirTabela(int iteracao, float a, float b, float m, float fA, float fB, float fM, char fAfM, char fMfB);
 
 float *multi = NULL; //Indice 0 a 6
 
@@ -19,6 +20,7 @@ int main (){
 setlocale(LC_ALL, "portuguese");
 int i=1, grau;
 float A, B, M, ERRO, fA, fB, fM, guardaResultado, K;
+char fAfM, fBfM;
 
 //Receber o grau da função entre 2 a 6
 printf("BEM VINDO a dicotomia radiotiva em C");
@@ -92,7 +94,26 @@ ImprimirCabecalhoTabela();
 i = 1;
 while(i <= K)
 {
-    printf("\ni = %i", i);
+    fA = funcaoX(grau, A, 'a');
+    fB = funcaoX(grau, B, 'b');
+    M = (A + B) / 2;
+    fM = funcaoX(grau, M, 'm');
+
+    if(fA * fM < 0)
+        {
+            fAfM = '-';
+            B = M;
+        }
+    else
+        fAfM = '+';
+
+    if(fB * fM < 0)
+        {
+            fBfM = '-';
+            A = M;
+        }
+
+    ImprimirTabela(i, A, B, M, fA, fB, fM, fAfM, fBfM);
     i++;
 }
 
@@ -111,7 +132,7 @@ for(i=grau; i>=0; i--)                                                   // 2x^2
     {                                                                    // multi[2]  = 2 | x = 2 | i = 2         |   multi[1]  = 0 | x = 2 | i = 1  | multi[0] = -3 | x = 2 | i = 0
         resultado = resultado + multi[i]*pow(x, i);                      // resultado = resultado + 2*2^2 = 8     |   resultado = 8 + 0*2^1 = 8      | multi[0] = 8 + -3*2^0 = 5
     }
-    printf("f(%c) = %.2f\n", funcaode, resultado);
+    //printf("f(%c) = %.2f\n", funcaode, resultado);
     return resultado;
 }
 
@@ -132,7 +153,11 @@ void ImprimirCabecalhoTabela()
     printf("--+-----+-------+-------+-------+-------+-------+-------+-------+\n");
 }
 
+void ImprimirTabela(int iteracao, float a, float b, float m, float fA, float fB, float fM, char fAfM, char fMfB)
+{
+    printf("%i |%.2f|%.2f\t|%.2f\t|%.2f\t|%.2f\t|%.2f\t|%c\t|%c\t|\n", iteracao, a, b, m, fA, fB, fM, fAfM, fMfB);
 
+}
 
 /*
 // CALCULA PONTO MEDIO
