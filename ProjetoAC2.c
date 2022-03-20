@@ -157,7 +157,6 @@ M = (A + B) / 2;
 while(i <= K)
 {
     M = (A + B) / 2;
-
     fA = funcaoX(grau, A, 'a');
     fB = funcaoX(grau, B, 'b');
     fM = funcaoX(grau, M, 'm');
@@ -167,19 +166,15 @@ while(i <= K)
             fAfM = '-';
             fBfM = '+';
             situacao = 1;
-            //B = M;
         }
     else
         {
             fBfM = '-';
             fAfM = '+';
             situacao = 2;
-            //A = M;
         }
 
-
     ImprimirTabela(i, A, B, M, fA, fB, fM, fAfM, fBfM);
-
 
     if(situacao==1)
     {
@@ -189,7 +184,6 @@ while(i <= K)
     {
         A = M;
     }
-
 
     i++;
 }
@@ -205,7 +199,7 @@ float resultado;
 resultado = 0;
 for(i=grau; i>=0; i--)                                                   // 2x^2 - 3
     {                                                                    // multi[2]  = 2 | x = 2 | i = 2         |   multi[1]  = 0 | x = 2 | i = 1  | multi[0] = -3 | x = 2 | i = 0
-        resultado = resultado + multi[i]*pow(x, i);                      // resultado = resultado + 2*2^2 = 8     |   resultado = 8 + 0*2^1 = 8      | multi[0] = 8 + -3*2^0 = 5
+        resultado = resultado + *(multi+i)*pow(x, i);                      // resultado = resultado + 2*2^2 = 8     |   resultado = 8 + 0*2^1 = 8      | multi[0] = 8 + -3*2^0 = 5
     }
     //printf("f(%c) = %.2f\n", funcaode, resultado);
     return resultado;
@@ -216,7 +210,6 @@ float CalculaValorK(float a, float b, float erro)
     float fValorK;
     fValorK = (log10(b-a) - log10(erro))/(log10(2));
     //printf("\n\nfValorK = %.2f", fValorK);
-
 
     return ceil(fValorK);
 }
