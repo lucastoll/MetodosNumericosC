@@ -99,8 +99,8 @@ do
         printf("\nDeseja digitar outro intervalo? <S/N>\n");
         scanf("%c", &controle);
         fflush(stdin);
-        }while(!(controle == 'S' || controle == 'N'));
-        if(controle == 'N')
+        }while(!(controle == 'S' || controle == 'N' || controle == 'n' || controle == 's'));
+        if(controle == 'N' || controle == 'n')
         {
             printf("Encerrando programa\n\n");
             system("pause");
@@ -225,12 +225,21 @@ void ImprimirCabecalhoTabela()
 {
     printf("\n\n\t\t\t     TABELA ITERAÇÕES\n\n");
     printf("I \t|  a\t|  b\t|  m\t|  f(a)\t|  f(b)\t|  f(m)\t| fa*fm\t| fm*fb\t|\n");
-    printf("--+-----+-------+-------+-------+-------+-------+-------+-------+\n");
+    printf("--+-----+-------+-------+-------+-------+-------+-------+-------+-------\n");
 }
 
 void ImprimirTabela(int iteracao, float a, float b, float m, float fA, float fB, float fM, char fAfM, char fMfB)
 {
-    printf("%i \t|%.3f\t|%.3f\t|%.3f\t|%.3f\t|%.3f\t|%.3f\t|%c\t|%c\t|\n", iteracao, a, b, m, fA, fB, fM, fAfM, fMfB);
+    if(a > 999.99 || a < -999.99 || b > 999.99 || b < -999.99 || m > 999.99 || m < -999.99 ||fA > 999.99 || fA < -999.99 || fB > 999.99 || fB < -999.99 || fM > 999.99 || fM < -999.99)
+        printf("%i \t|%.0f\t|%.0f\t|%.0f\t|%.0f\t|%.0f\t|%.0f\t|%c\t|%c\t|  Valores que ocupam muitas casas decimais aparecem arredondados ou como 0 para não quebrar a tabela.\n", iteracao, a, b, m, fA, fB, fM, fAfM, fMfB);
+    else if(a > 99.99 || a < -99.99 || b > 99.99 || b < -99.99 || m > 99.99 || m < -99.99 ||fA > 99.99 || fA < -99.99 || fB > 99.99 || fB < -99.99 || fM > 99.99 || fM < -99.99)
+        printf("%i \t|%.1f\t|%.1f\t|%.1f\t|%.1f\t|%.1f\t|%.1f\t|%c\t|%c\t|\n", iteracao, a, b, m, fA, fB, fM, fAfM, fMfB);
+    else if(a > 9.99 || a < -9.99 || b > 9.99 || b < -9.99 || m > 9.99 || m < -9.99 ||fA > 9.99 || fA < -9.99 || fB > 9.99 || fB < -9.99 || fM > 9.99 || fM < -9.99) // Tratamento para não quebrar a tabela com valores acima de 2 casas
+        printf("%i \t|%.2f\t|%.2f\t|%.2f\t|%.2f\t|%.2f\t|%.2f\t|%c\t|%c\t|\n", iteracao, a, b, m, fA, fB, fM, fAfM, fMfB);
+    else
+        printf("%i \t|%.3f\t|%.3f\t|%.3f\t|%.3f\t|%.3f\t|%.3f\t|%c\t|%c\t|\n", iteracao, a, b, m, fA, fB, fM, fAfM, fMfB);
+
+
 }
 
 
