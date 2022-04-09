@@ -6,6 +6,13 @@ Matheus Parizotto Martins            RA 211067
 Programa que aplica o metodo da dicotomia, aceitando funções do segundo ao sexto grau
 * Caso o menor valor seja armazenado na variável B o programa troca A e B automaticamente
 - Caso o número exibido seja grande ao ponto de quebrar a tabela, o código desenvolvido deve arredondar o número ou mostrar 0 em casos de números muito grandes
+
+Exemplo feito em aula validado no programa:
+EQUAÇÃO: 2X^2 - 3
+A = -1,5 | B = -1
+ERRO = 0,01
+
+VALOR DA RAIZ FINAL: -1,226375
 */
 
 #include <stdio.h>
@@ -131,8 +138,6 @@ do
     }
 }while(guardaResultado > 0);
 
-
-
 // ERRO
 printf("\nInforme o erro do problema: ");
 scanf("%f", &ERRO);
@@ -171,19 +176,15 @@ while(i <= K)
             fAfM = '-';
             fBfM = '+';
             situacao = 1;
-            //B = M;
         }
     else
         {
             fBfM = '-';
             fAfM = '+';
             situacao = 2;
-            //A = M;
         }
 
-
     ImprimirTabela(i, A, B, M, fA, fB, fM, fAfM, fBfM);
-
 
     if(situacao==1)
     {
@@ -193,7 +194,6 @@ while(i <= K)
     {
         A = M;
     }
-
 
     i++;
 }
@@ -211,7 +211,6 @@ for(i=grau; i>=0; i--)                                                   // 2x^2
     {                                                                    // multi[2]  = 2 | x = 2 | i = 2         |   multi[1]  = 0 | x = 2 | i = 1  | multi[0] = -3 | x = 2 | i = 0
         resultado = resultado + multi[i]*pow(x, i);                      // resultado = resultado + 2*2^2 = 8     |   resultado = 8 + 0*2^1 = 8      | multi[0] = 8 + -3*2^0 = 5
     }
-    //printf("f(%c) = %.2f\n", funcaode, resultado);
     return resultado;
 }
 
@@ -219,9 +218,6 @@ float CalculaValorK(float a, float b, float erro)
 {
     float fValorK;
     fValorK = (log10(b-a) - log10(erro))/(log10(2));
-    //printf("\n\nfValorK = %.2f", fValorK);
-
-
     return ceil(fValorK);
 }
 
@@ -234,16 +230,15 @@ void ImprimirCabecalhoTabela()
 
 void ImprimirTabela(int iteracao, float a, float b, float m, float fA, float fB, float fM, char fAfM, char fMfB)
 {
+    // Tratamento para não quebrar a tabela com valores acima de 2 casas
     if(a > 999.99 || a < -999.99 || b > 999.99 || b < -999.99 || m > 999.99 || m < -999.99 ||fA > 999.99 || fA < -999.99 || fB > 999.99 || fB < -999.99 || fM > 999.99 || fM < -999.99)
         printf("%i \t|%.0f\t|%.0f\t|%.0f\t|%.0f\t|%.0f\t|%.0f\t|%c\t|%c\t|  Valores que ocupam muitas casas decimais aparecem arredondados ou como 0 para não quebrar a tabela.\n", iteracao, a, b, m, fA, fB, fM, fAfM, fMfB);
     else if(a > 99.99 || a < -99.99 || b > 99.99 || b < -99.99 || m > 99.99 || m < -99.99 ||fA > 99.99 || fA < -99.99 || fB > 99.99 || fB < -99.99 || fM > 99.99 || fM < -99.99)
         printf("%i \t|%.1f\t|%.1f\t|%.1f\t|%.1f\t|%.1f\t|%.1f\t|%c\t|%c\t|\n", iteracao, a, b, m, fA, fB, fM, fAfM, fMfB);
-    else if(a > 9.99 || a < -9.99 || b > 9.99 || b < -9.99 || m > 9.99 || m < -9.99 ||fA > 9.99 || fA < -9.99 || fB > 9.99 || fB < -9.99 || fM > 9.99 || fM < -9.99) // Tratamento para não quebrar a tabela com valores acima de 2 casas
+    else if(a > 9.99 || a < -9.99 || b > 9.99 || b < -9.99 || m > 9.99 || m < -9.99 ||fA > 9.99 || fA < -9.99 || fB > 9.99 || fB < -9.99 || fM > 9.99 || fM < -9.99)
         printf("%i \t|%.2f\t|%.2f\t|%.2f\t|%.2f\t|%.2f\t|%.2f\t|%c\t|%c\t|\n", iteracao, a, b, m, fA, fB, fM, fAfM, fMfB);
     else
         printf("%i \t|%.3f\t|%.3f\t|%.3f\t|%.3f\t|%.3f\t|%.3f\t|%c\t|%c\t|\n", iteracao, a, b, m, fA, fB, fM, fAfM, fMfB);
-
-
 }
 
 

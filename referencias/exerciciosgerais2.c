@@ -149,7 +149,7 @@ float conversao_fahrenheit(int temperaturaC)
 */
 
 // Exercício 4 - Função Média chamando Função Soma
-
+/*
 float media(float n1, float n2);
 float soma(float n1, float n2);
 
@@ -175,7 +175,7 @@ float media(float n1, float n2)
 {
     return(soma(n1, n2)/ 2);
 }
-
+*/
 
 
 // Exercício 5 - Função par ou impar
@@ -753,7 +753,7 @@ for(i=0;i<q;i++)
 
 
 // Exercício 19 - soma de notas com ponteiro e chamada por referência
-/*
+
 void scan_vetor(float *p_vetor, int q);
 void media_vetor(float *p_vetor1, float *p_vetor2, float *p_vetor3, int q);
 void print_vetor(float *p_vetor, int q);
@@ -841,7 +841,7 @@ for(i=0;i<q;i++)
     printf("\nNota[%i] =  %.2f", i, *p_vetor++);
     }
 }
-*/
+
 
 
 // Exercício 20 - MEDIA VETOR, ABAIXO DA MEDIA, MAIOR DO VETOR E ETC...
