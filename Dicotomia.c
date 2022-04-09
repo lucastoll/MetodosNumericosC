@@ -2,6 +2,10 @@
 Lucas Fernandes Tolotto              RA 211046
 Kauan da Silva Vieira                RA 211018
 Matheus Parizotto Martins            RA 211067
+
+Programa que aplica o metodo da dicotomia, aceitando funções do segundo ao sexto grau
+* Caso o menor valor seja armazenado na variável B o programa troca A e B automaticamente
+- Caso o número exibido seja grande ao ponto de quebrar a tabela, o código desenvolvido deve arredondar o número ou mostrar 0 em casos de números muito grandes
 */
 
 #include <stdio.h>
