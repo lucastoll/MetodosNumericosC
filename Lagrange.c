@@ -3,7 +3,7 @@ Lucas Fernandes Tolotto              RA 211046
 Kauan da Silva Vieira                RA 211018
 Matheus Parizotto Martins            RA 211067
 
-Programa que aplica o metodo de Lagrange
+Programa que aplica o metodo de Lagrange, ele não mostra a equação a partir dos dados da tabela, só descobre o valor de outro ponto na tabela a partir da tabela.
 
 Exemplo feito em aula validado no programa:
 -1 0 2
@@ -80,6 +80,7 @@ int main()
                 if(i!=j)
                 {
                     Li = Li * ((valorCalcular - *(valoresX+j)) / (*(valoresX+i)-*(valoresX+j)));
+                    printf("\nli = %f\n", Li);
                 }
             }
             Px += (Li * *(valoresFX+i));

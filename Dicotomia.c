@@ -209,7 +209,7 @@ float resultado;
 resultado = 0;
 for(i=grau; i>=0; i--)                                                   // 2x^2 - 3
     {                                                                    // multi[2]  = 2 | x = 2 | i = 2         |   multi[1]  = 0 | x = 2 | i = 1  | multi[0] = -3 | x = 2 | i = 0
-        resultado = resultado + multi[i]*pow(x, i);                      // resultado = resultado + 2*2^2 = 8     |   resultado = 8 + 0*2^1 = 8      | multi[0] = 8 + -3*2^0 = 5
+        resultado = resultado + *(multi+i)*pow(x, i);                      // resultado = resultado + 2*2^2 = 8     |   resultado = 8 + 0*2^1 = 8      | multi[0] = 8 + -3*2^0 = 5
     }
     return resultado;
 }
