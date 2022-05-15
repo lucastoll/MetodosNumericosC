@@ -193,7 +193,7 @@ int main()
             a2 = *(sistemaLinearFX+2) / *(sistemaLinearX+8);
             a1 = ((*(sistemaLinearFX+1) - (*(sistemaLinearX+5) * a2)) / *(sistemaLinearX+4));
             a0 = (*(sistemaLinearFX+0) - (*(sistemaLinearX+1)*a1 + *(sistemaLinearX+2)*a2)) / *(sistemaLinearX+0);
-            printf("\nAs raizes obtidas foram %.2fx^2 %.2fx %.2f\n", a2, a1, a0);
+            printf("\nAs raizes obtidas foram %fx^2 %fx %f\n", a2, a1, a0);
         }
 
 
@@ -205,8 +205,6 @@ int main()
     {
         aloca(&sistemaLinearX, 4);
         aloca(&sistemaLinearFX, 2);
-
-
         //prevenção tirar lixo da memória
         for(i=0;i<4;i++){
             *(sistemaLinearX+i) = 0;
@@ -215,7 +213,6 @@ int main()
         for(i=0;i<2;i++){
             *(sistemaLinearFX+i) = 0;
         }
-
         //formula minimos quadrados parabola.
         for(i=0;i<n;i++){
             *(sistemaLinearX+0) += 1;
@@ -226,10 +223,23 @@ int main()
             *(sistemaLinearFX+0) += *(valoresFX+i);
             *(sistemaLinearFX+1) += (*(valoresFX+i) * *(valoresX+i));
         }
-
         ImprimirSistemaLinear(1, sistemaLinearX, sistemaLinearFX);
-    }
+        iteracao=0;
 
+        pivo = *(sistemaLinearX+0);
+        multiplicador21 = *(sistemaLinearX+2) / pivo;
+        printf("\nPivo = %f | Multiplicador = %f\n", pivo, multiplicador21);
+        if(*(sistemaLinearX+2) != 0)
+        {
+            *(sistemaLinearX+2) = (*(sistemaLinearX+2)) - (*(sistemaLinearX+0) * multiplicador21);
+            *(sistemaLinearX+3) = (*(sistemaLinearX+3)) - (*(sistemaLinearX+1) * multiplicador21);
+            *(sistemaLinearFX+1) = (*(sistemaLinearFX+1) - (*(sistemaLinearFX+0) * multiplicador21));
+            ImprimirSistemaLinear(1, sistemaLinearX, sistemaLinearFX);
+        }
+        a2 = *(sistemaLinearFX+1) / *(sistemaLinearX+3);
+        a1 = ((*(sistemaLinearFX+0) - (*(sistemaLinearX+1) * a2)) / *(sistemaLinearX+0));
+        printf("\nAs raizes obtidas foram %f %f\n", a2, a1);
+    }
     printf("\n");
     system("pause");
 }//main
